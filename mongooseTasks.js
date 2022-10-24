@@ -1,15 +1,16 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://localhost/test1')
+var God = require("./models/god").God
 
-var schema = mongoose.Schema({ name: String })
-schema.methods.meow = function(){
-    console.log(this.get("name") + ": Чтобы хорошо сражаться, воин не должен сочувствовать врагу")
-}
 
-var God = mongoose.model('God', schema)
+var god = new God({
+title: "Кратос - бог войны",
+nick: "Kratos"
+})
 
-var kitty = new God({ name: 'Kratos' })
-kitty.save(function (err) {
-    kitty.meow()
+
+console.log(god)
+god.save(function(err, god, affected){
+    console.log(god.title)
 })
 
