@@ -10,8 +10,8 @@ await client.connect();
 var database = client.db("Kratos");
 database.dropDatabase()
 database = client.db("Kratos");
-const GoW = database.collection("GoW");
-const result = await GoW.insertMany(data);
+const gods = database.collection("gods");
+const result = await gods.insertMany(data);
 console.log(`${result.insertedCount} documents were inserted`);
 } finally {
 await client.close();
