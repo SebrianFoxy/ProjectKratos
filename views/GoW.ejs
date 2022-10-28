@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% layout('./layout/page.ejs') %>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+    <img src="<%= picture %>" alt="" />
+    <h2>Несколько слов о нашем герое: <%=desc%>
+    </h2>
+</body>
+
+</html>
