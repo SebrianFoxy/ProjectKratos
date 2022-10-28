@@ -26,16 +26,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Главная</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/kratos_old">Кратос - убийца богов</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/kratos_new">Кратос - отец</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Atrey">Атрей</a>
-                </li>
-            </ul>
+                <% menu.forEach(function(god){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gods/<%=god.nick%>">
+                            <%=god.title%>
+                        </a>
+                    </li>
+                    <% }) %>
             <ul class="navbar-nav navbar-right">
                 <li>
                     <a class="nav-link" href="/logreg">Войти</a>
