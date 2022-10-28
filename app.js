@@ -9,6 +9,8 @@ var logger = require('morgan');
 var gods = require('./routes/gods');
 var God = require("./models/god").God
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
