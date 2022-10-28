@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var God = require("../models/god").God
+//var async = require("async")
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -7,8 +9,17 @@ router.get('/', function(req, res, next) {
 });
 
 /* Страница богов */
-router.get("/:nick", function(req, res, next) {
-    res.send(req.params.nick);
+router.get('/:nick', function(req, res, next) {
+    God.findOne({nick:req.params.nick}, function(err,god){
+        if(err) return next(err)
+        if(!god) return next(new Error("Нет такого персонажа для выбора"))
+        res.render('god', {
+            title: god.title,
+            picture: god.avatar,
+            desc: god.desc
+        })
+    })
 });
+
 
 module.exports = router;
