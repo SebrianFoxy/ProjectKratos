@@ -6,12 +6,14 @@ var God = require("../models/god").God
 /* GET home page. */
 router.get('/', function(req, res, next) {
     God.find({},{_id:0,title:1,nick:1},function(err,menu){
-        res.render('index', {
+        res.cookie('greeting','Hi!!!').render('index', {
                                 title: 'Express',
                                 menu: menu
                             });
     })
 });
+
+
 
 /*
 router.get('/kratos_old', function(req, res, next) {
