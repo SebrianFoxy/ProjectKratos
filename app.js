@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/Kratos')
 var session = require("express-session")
 var logger = require('morgan');
 var gods = require('./routes/gods');
+var God = require("./models/god").God
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -37,6 +38,17 @@ app.use(function(req,res,next){
     next()
 })
 
+app.use(function(req,res,next){
+    res.locals.nav = []
+    God.find(null,{_id:0,title:1,nick:1},function(err,result){
+        if(err) throw err
+        res.locals.nav = result
+        next()
+    })
+})
+
+app.use(require("./middleware/createMenu.js"))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -54,7 +66,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', {title:'Ошибка', menu:[]});
+  res.render('error', {title:'Ошибка'});
 });
 
 app.engine('ejs',require('ejs-locals'));

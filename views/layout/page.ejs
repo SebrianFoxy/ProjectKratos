@@ -25,14 +25,15 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Главная</a>
+                
                 </li>
-                <% menu.forEach(function(god){ %>
+                <% if(typeof nav=='object' && nav){ nav.forEach(function(god){ %>
                     <li class="nav-item">
                         <a class="nav-link" href="/gods/<%=god.nick%>">
                             <%=god.title%>
                         </a>
                     </li>
-                    <% }) %>
+                    <% })} %>
             <ul class="navbar-nav navbar-right">
                 <li>
                     <a class="nav-link" href="/logreg">Войти</a>
