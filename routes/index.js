@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
         req.session.greeting = "Hi!!!",
         res.cookie('greeting','Hi!!!').render('index', {
                                 title: 'Express',
-                                menu: menu
+                                menu: menu,
+                                counter: req.session.counter,
                             });
                             
     })
