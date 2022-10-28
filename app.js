@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/Kratos')
+var session = require("express-session")
 var logger = require('morgan');
 var gods = require('./routes/gods');
 
@@ -22,6 +23,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/gods', gods);
+app.use(session({
+    secret: "GodOfWar",
+    cookie:{maxAge:60*1000},
+    resave: true,
+    saveUninitialized: true	
+}))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
