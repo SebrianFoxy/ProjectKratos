@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 /* GET login/registration page. */
 router.get('/logreg', function(req, res, next) {
-  res.render('logreg',{title: 'Вход'});
+  res.render('logreg',{title: 'Вход', error:null});
 });
 
 /* POST login/registration page. */
@@ -34,7 +34,7 @@ router.post('/logreg', function(req, res, next) {
                 req.session.user = user._id
                 res.redirect('/')
             } else {
-                      res.render('logreg', {title: 'Вход'})
+                    res.render('logreg', {title: 'Вход', error:"Пароль не верный"})
             }
         } else {
             var user = new User({username:username,password:password})

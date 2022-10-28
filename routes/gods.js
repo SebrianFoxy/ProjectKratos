@@ -9,6 +9,9 @@ router.get('/', function(req, res, next) {
     res.send('Новый маршрутизатор, для маршрутов, начинающихся с gods')
 });
 
+
+
+
 /* Страница котят */
 router.get('/:nick', function(req, res, next) {
     God.findOne({nick:req.params.nick}, function(err,god){
