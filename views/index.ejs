@@ -4,6 +4,12 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <% layout('./layout/page.ejs') %>
+    <% if(user) {%>
+      // Случай залогиненного пользователя
+      <% }else{ %>
+        // Случай не залогиненного пользователя
+        <% } %>
+
   </head>
   <body>
     <h1>
