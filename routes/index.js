@@ -3,6 +3,7 @@ var router = express.Router()
 var God = require("../models/god").God
 var User = require("./../models/user").User
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     God.find({},{_id:0,title:1,nick:1},function(err,menu){

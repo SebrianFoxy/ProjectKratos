@@ -34,16 +34,15 @@
                         </a>
                     </li>
                     <% })} %>
-            <div class="navbar-nav ms-auto nav navbar-nav navbar-right"">
+            <div class="navbar-nav ms-auto nav navbar-nav navbar-right">
                 <%if(user){%>
                 <form action=" /logout" method="post">
-                <button type="submit" class="btn btn-link">Выйти</button>
+                    <button type="submit" class="btn btn-link">Выйти</button>
                 </form>
                 <% } else { %>
                     <a href="/logreg" class="nav-item nav-link">Войти</a>
                     <% } %>
             </div>
-
         </div>
     </nav>
     <%- body%>
