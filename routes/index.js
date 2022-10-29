@@ -20,11 +20,17 @@ router.get('/logreg', function(req, res, next) {
   res.render('logreg',{title: 'Вход', error:null});
 });
 
+/* POST logout. */
+router.post('/logout', function(req, res, next) {
+    req.session.destroy()
+    res.locals.user = null
+    res.redirect('/')
+});
+
+
+
 /* POST login/registration page. */
 router.post('/logreg', function(req, res, next) {
-    var username = req.body.username
-    var password = req.body.password
-    router.post('/logreg', function(req, res, next) {
     var username = req.body.username
     var password = req.body.password
     User.findOne({username:username},function(err,user){
@@ -36,8 +42,8 @@ router.post('/logreg', function(req, res, next) {
             } else {
                     res.render('logreg', {title: 'Вход', error:"Пароль не верный"})
             }
-        } else {
-            var user = new User({username:username,password:password})
+      } else {
+      var user = new User({username:username,password:password})
             user.save(function(err,user){
                 if(err) return next(err)
                 req.session.user = user._id
@@ -45,9 +51,6 @@ router.post('/logreg', function(req, res, next) {
             })        
       }
     })
-});
-
-
 });
 
 
