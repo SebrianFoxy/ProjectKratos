@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <% layout('./layout/page.ejs') %>
-    <% if(user) {%>
-      // Случай залогиненного пользователя
-      <% }else{ %>
-        // Случай не залогиненного пользователя
-        <% } %>
-
-  </head>
-  <body>
-    <h1>
-      <%= title %>
+<% layout('./layout/page.ejs') %>
+  <% if(user.length> 0) {%>
+    <h1>Привет <%= user[0].username %>
     </h1>
-    <p>Welcome to <%= title %></p>
-    <p>Счетчик: <%= counter %></p>
-  </body>
-</html>
+    <% } else { %>
+      <h1>Зарегистрируйтесь, чтобы видеть все страницы сайта</h1>
+      <% } %>
+
+        <h1>
+          <%= title %>
+        </h1>
+        <p>Добро пожаловать в мир Богов</p>
+        <p>Счетчик: <%= counter %>
+        </p>

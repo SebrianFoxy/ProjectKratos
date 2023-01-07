@@ -2,6 +2,7 @@
 var express = require('express')
 var router = express.Router()
 var db = require('../mySQLConnect.js');
+var checkAuth = require("../middleware/checkAuth.js")
 //var God = require("../models/god").God
 //var checkAuth = require("./../middleware/checkAuth.js")
 //var async = require("async")
